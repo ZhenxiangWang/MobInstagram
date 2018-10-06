@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.initialize(with: parseConfig)
         
         login()
+        print("test git")
         
         return true
     }
