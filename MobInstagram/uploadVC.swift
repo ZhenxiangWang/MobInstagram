@@ -18,11 +18,12 @@ class uploadVC: UIViewController {
     @IBOutlet var publishBtn: UIButton!
     
     var img: UIImage = UIImage(named: "pbg.jpg")!
+    var ciImage : CIImage = CIImage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        publishBtn.isEnabled = false
+        //publishBtn.isEnabled = false
         publishBtn.backgroundColor = .lightGray
         
         picImg.image = img
@@ -55,7 +56,11 @@ class uploadVC: UIViewController {
             object["title"] = titleTxt.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         }
         
-        let picData = picImg.image!.jpegData(compressionQuality: 0.5)
+        var picData = picImg.image!.jpegData(compressionQuality: 0.5)
+        if picData == nil {
+            let ciContext = CIContext()
+            picData = ciContext.jpegRepresentation(of: ciImage, colorSpace: ciContext.workingColorSpace!, options: [:])
+        }
         let imageFile = PFFile(name: "post.jpg", data: picData!)
         object["pic"] = imageFile
         
