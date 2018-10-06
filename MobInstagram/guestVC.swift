@@ -46,11 +46,9 @@ class guestVC: UICollectionViewController {
         collectionView?.addSubview(refresher!)
         
         loadPosts()
-        
-        
-        
     }
     
+    //back button fucntion, return to last view
     @objc func back(sender: UIBarButtonItem){
         
         //push back
@@ -60,16 +58,16 @@ class guestVC: UICollectionViewController {
         if !guest.isEmpty{
             guest.removeLast()
         }
-        
     }
     
+    //reload data
     @objc func refresh(){
         collectionView?.reloadData()
         refresher?.endRefreshing()
     }
     
+    //load posts
     func loadPosts(){
-        
         let query = PFQuery(className: "posts")
         query.whereKey("username", equalTo: guest.last!)
         query.limit = page
@@ -92,6 +90,42 @@ class guestVC: UICollectionViewController {
         }
     }
     
+    
+    @objc func postsTap(){
+        if !picArray.isEmpty{
+            let index = IndexPath(item: 0, section: 0)
+            self.collectionView?.scrollToItem(at: index, at: UICollectionView.ScrollPosition.top, animated: true)
+        }
+    }
+    // tapping follower label will navigating a new view listing all followers
+    @objc func followersTap(){
+        user = guest.last!
+        category = "followers"
+        
+        let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
+        
+        self.navigationController?.pushViewController(followers, animated: true)
+    }
+    
+    // tapping following label will navigate to a new view listing all following users
+    @objc func followingsTap(){
+        user = guest.last!
+        category = "followings"
+        
+        let followings = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
+        
+        self.navigationController?.pushViewController(followings, animated: true)
+    }
+    
+    //select cell can navigate to the user's profile
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        postuuid.append(uuidArray[indexPath.row])
+        
+        let post = self.storyboard?.instantiateViewController(withIdentifier: "postVC") as! postVC
+        self.navigationController?.pushViewController(post, animated: true)
+    }
+    
+    
     //cell number
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return picArray.count
@@ -111,12 +145,12 @@ class guestVC: UICollectionViewController {
         return cell
     }
     
-    //head config
+    //head view config
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header", for: indexPath) as! headerView
         
-        //step1 load data
+        //load data
         let infoQuery = PFQuery(className: "_User")
         infoQuery.whereKey("username", equalTo: guest.last!)
         infoQuery.findObjectsInBackground { (objects, error) in
@@ -127,6 +161,7 @@ class guestVC: UICollectionViewController {
                 }
                 
                 for object in objects!{
+                    //set text
                     header.fullnameLbl.text = (object.object(forKey: "fullname") as? String)?.uppercased()
                     header.bioLbl.text = object.object(forKey: "bio") as? String
                     header.bioLbl.sizeToFit()
@@ -142,7 +177,7 @@ class guestVC: UICollectionViewController {
             }
         }
         
-        //step2
+        //set button paterm according to the following status
         let followQuery = PFQuery(className: "follow")
         followQuery.whereKey("follower", equalTo: PFUser.current()!.username!)
         followQuery.whereKey("following", equalTo: guest.last!)
@@ -161,7 +196,6 @@ class guestVC: UICollectionViewController {
         }
         
         
-        //step3 count number
         // count posts
         let posts = PFQuery(className: "posts")
         posts.whereKey("username", equalTo: guest.last!)
@@ -195,7 +229,7 @@ class guestVC: UICollectionViewController {
             }
         })
         
-        //step4 implement gestures
+        //implement gestures
         let postsTap = UITapGestureRecognizer(target: self, action: #selector(guestVC.postsTap))
         postsTap.numberOfTapsRequired = 1
         header.posts.isUserInteractionEnabled = true
@@ -213,40 +247,6 @@ class guestVC: UICollectionViewController {
         
         return header
     }
-    
-    @objc func postsTap(){
-        if !picArray.isEmpty{
-            let index = IndexPath(item: 0, section: 0)
-            self.collectionView?.scrollToItem(at: index, at: UICollectionView.ScrollPosition.top, animated: true)
-        }
-    }
-    
-    @objc func followersTap(){
-        user = guest.last!
-        category = "followers"
-        
-        let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
-        
-        self.navigationController?.pushViewController(followers, animated: true)
-        
-    }
-    
-    @objc func followingsTap(){
-        user = guest.last!
-        category = "followings"
-        
-        let followings = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
-        
-        self.navigationController?.pushViewController(followings, animated: true)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        postuuid.append(uuidArray[indexPath.row])
-        
-        let post = self.storyboard?.instantiateViewController(withIdentifier: "postVC") as! postVC
-        self.navigationController?.pushViewController(post, animated: true)
-    }
-    
     
 
 }

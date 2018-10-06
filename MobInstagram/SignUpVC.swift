@@ -2,9 +2,9 @@
 //  signUpVC.swift
 //  MobInstagram
 //
-//  Created by hha6027875 on 10/9/18.
+//  Created by wenbin chen on 10/9/18.
 //  Copyright © 2018 hha6027875. All rights reserved.
-//
+//  This file provide a Sign up function
 
 import UIKit
 import Parse
@@ -31,7 +31,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     //default func
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         
         scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         scrollView.contentSize.height = self.view.frame.height
@@ -57,6 +57,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         avaImg.addGestureRecognizer(avaTap)
     }
     
+    // pick image from library
     @objc func loadImg(_ revongnizer:UITapGestureRecognizer){
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -65,11 +66,9 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         present(picker, animated: true, completion: nil)
     }
     
+    // implent delegate function
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-// Local variable inserted by Swift 4.2 migrator.
-let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
-
-        avaImg.image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.editedImage)] as? UIImage
+        avaImg.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -98,13 +97,13 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         }
     }
     
-
     
     @IBAction func signUp_click(_ sender: Any) {
         
         //dismiss keyboard
         self.view.endEditing(true)
         
+        //there should be no empty in any textfield
         if usernameTxt.text!.isEmpty || passwordTxt.text!.isEmpty || repeatpassword.text!.isEmpty || emailTxt.text!.isEmpty || fullnameTxt.text!.isEmpty || bioTxt.text!.isEmpty || webTxt.text!.isEmpty {
             
             let alert = UIAlertController(title: "PLEASE", message: "fill all fields", preferredStyle: UIAlertController.Style.alert)
@@ -113,14 +112,15 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
             self.present(alert, animated: true, completion: nil)
         }
         
+        //password should be the same as repeated password
         if passwordTxt.text != repeatpassword.text{
-            
             let alert = UIAlertController(title: "PASSWORDS", message: "does not match", preferredStyle: UIAlertController.Style.alert)
             let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
             alert.addAction(ok)
             self.present(alert, animated: true, completion: nil)
         }
         
+        //create a user object
         let user = PFUser()
         user.username = usernameTxt.text?.lowercased()
         user.email = emailTxt.text?.lowercased()
@@ -136,6 +136,7 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         let avaFile = PFFile(name: "ava.jpg", data: avaData!)
         user["ava"] = avaFile
         
+        //save the user object to server
         user.signUpInBackground(block: {(success:Bool, error:Error?) -> Void in
             if success{
                 print("registered")
@@ -168,26 +169,4 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
-	return input.rawValue
 }

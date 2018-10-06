@@ -2,9 +2,9 @@
 //  signInVC.swift
 //  MobInstagram
 //
-//  Created by hha6027875 on 10/9/18.
+//  Created by wenbinc on 10/9/18.
 //  Copyright © 2018 hha6027875. All rights reserved.
-//
+//  This file provide Sign In fucntion
 
 import UIKit
 import Parse
@@ -20,16 +20,11 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //declare hide keyboard tap
+        //declare hide keyboard tap, when tapping a blank area hide keyboard
         let hideTap = UITapGestureRecognizer(target: self, action: #selector(SignInVC.hideKeyboardTap(_:)))
         hideTap.numberOfTapsRequired = 1
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(hideTap)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //hide keyboard if tapped
@@ -37,13 +32,13 @@ class SignInVC: UIViewController {
         self.view.endEditing(true)
     }
     
-
     @IBAction func signInClicked(_ sender: Any) {
         print ("Sign In pressed")
         
         //hide keyboard
         self.view.endEditing(true)
         
+        //alert if username or password is nil
         if usernameTxt.text!.isEmpty || passwordTxt.text!.isEmpty{
             let alert = UIAlertController(title: "PLEASE", message:"fill in field", preferredStyle: UIAlertController.Style.alert)
             let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
@@ -51,7 +46,7 @@ class SignInVC: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
         
-        //login func
+        //login and store the logged user as default user, so that we don't need to login again
         PFUser.logInWithUsername(inBackground: usernameTxt.text!, password: passwordTxt.text!){(user:PFUser?, error:Error?) -> Void in
             if error == nil{
                 UserDefaults.standard.set(user!.username, forKey: "username")
@@ -66,14 +61,5 @@ class SignInVC: UIViewController {
                 self.present(alert, animated: true, completion: nil)            }
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
