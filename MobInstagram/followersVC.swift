@@ -24,6 +24,7 @@ class followersVC: UITableViewController {
 
         self.navigationItem.title = category
         
+        //according to different category load different users
         if category == "followers" {
             loadFollowers()
         } else if category == "followings" {
@@ -34,12 +35,10 @@ class followersVC: UITableViewController {
     }
     
     func loadFollowers(){
-        
         let followQuery = PFQuery(className: "follow")
         followQuery.whereKey("following", equalTo: user)
         followQuery.findObjectsInBackground(block: {(object:[PFObject]?, error:Error?) -> Void in
             if error == nil {
-                
                 //clean up
                 self.followArray.removeAll(keepingCapacity: false)
                 //find the follower object
@@ -111,7 +110,7 @@ class followersVC: UITableViewController {
     }
     
     func loadLikes(){
-        
+        //find the users that likes the post
         let followQuery = PFQuery(className: "likes")
         followQuery.whereKey("to", equalTo: user)
         followQuery.findObjectsInBackground(block: {(object:[PFObject]?, error:Error?) -> Void in
@@ -123,13 +122,13 @@ class followersVC: UITableViewController {
                 for object in object! {
                     self.followArray.append(object.value(forKey: "by") as! String)
                 }
-                //find the following user
+                //find the user ava
                 let query = PFQuery(className: "_User")
                 query.whereKey("username", containedIn: self.followArray)
                 query.addDescendingOrder("createdAt")
                 query.findObjectsInBackground(block: {(objects:[PFObject]?, error:Error?) -> Void in
                     if error == nil{
-                        
+                        //clean up
                         self.usernameArray.removeAll(keepingCapacity: false)
                         self.avaArray.removeAll(keepingCapacity: false)
                         //add to array
@@ -193,14 +192,15 @@ class followersVC: UITableViewController {
         return cell
     }
     
-    
+    //select each cell can navigate to the user's profile
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! followersCell
         
+        //jump to myself
         if cell.usernameLbl.text! == PFUser.current()!.username! {
             let home = self.storyboard?.instantiateViewController(withIdentifier: "homeVC") as! homeVC
             self.navigationController?.pushViewController(home, animated: true)
-        } else {
+        } else {//guest jump
             guest.append(cell.usernameLbl.text!)
             let guestv = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
             self.navigationController?.pushViewController(guestv, animated: true)

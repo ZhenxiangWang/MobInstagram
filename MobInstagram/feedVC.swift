@@ -31,7 +31,6 @@ class feedVC: UITableViewController {
         self.navigationItem.title = "FEED"
         
         tableView.rowHeight = 540
-        
         //pull to refresh
         refresher.addTarget(self, action: #selector(feedVC.loadPosts), for: UIControl.Event.valueChanged)
         tableView.addSubview(refresher)
@@ -200,7 +199,6 @@ class feedVC: UITableViewController {
         
         cell.commentBtn.layer.setValue(indexPath, forKey: "index")
         cell.likeLbl.layer.setValue(indexPath, forKey:"index")
-        
         return cell
     }
     

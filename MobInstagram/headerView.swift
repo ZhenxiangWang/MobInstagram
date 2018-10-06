@@ -4,7 +4,7 @@
 //
 //  Created by hha6027875 on 15/9/18.
 //  Copyright © 2018 hha6027875. All rights reserved.
-//
+//  this is header view config
 
 import UIKit
 import Parse
@@ -28,11 +28,13 @@ class headerView: UICollectionReusableView {
     
     @IBOutlet var button: UIButton!
     
-    
+    //If it is others profile page, there will be a follow button.
+    //Clicking it can follow or unfollow that user
     @IBAction func followBtn_click(_ sender: Any) {
         let title = button.title(for: .normal)
         //to follow
         if title == "FOLLOW" {
+            //add a follow information to database
             let object = PFObject(className: "follow")
             object["follower"] = PFUser.current()?.username
             object["following"] = guest.last!
@@ -55,14 +57,16 @@ class headerView: UICollectionReusableView {
                     print(error!.localizedDescription)
                 }
             })
-            //unfollow
+        //unfollow
         } else {
+            //find the follow information
             let query = PFQuery(className: "follow")
             query.whereKey("follower", equalTo: PFUser.current()!.username!)
             query.whereKey("following", equalTo: guest.last!)
             query.findObjectsInBackground { (objects, error) in
                 if error == nil {
                     for object in objects! {
+                        //delete the follow information
                         object.deleteInBackground(block: { (success, error) in
                             if success {
                                 self.button.setTitle("FOLLOW", for: UIControl.State())

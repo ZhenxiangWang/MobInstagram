@@ -245,6 +245,7 @@ class commentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self.avaArray.append(PFUser.current()?.object(forKey: "ava") as! PFFile)
                 self.dateArray.append(Date())
                 self.commentArray.append(self.commentTxt.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))
+                self.commentTxt.text = ""
                 self.tableView.reloadData()
             } else {
                 print (error!.localizedDescription)
@@ -263,8 +264,7 @@ class commentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             newsObj["checked"] = "no"
             newsObj.saveEventually()
         }
-        
-        commentTxt.text = ""
+    
     }
     
 

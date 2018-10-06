@@ -4,7 +4,7 @@
 //
 //  Created by hha6027875 on 16/9/18.
 //  Copyright © 2018 hha6027875. All rights reserved.
-//
+//  this is the cell file for each user in followers view controller
 
 import UIKit
 import Parse
@@ -20,11 +20,12 @@ class followersCell: UITableViewCell {
         // Initialization code
     }
 
+    //click button to follow or unfollow a user
     @IBAction func followBtn_click(_ sender: Any) {
-        
         let title = followBtn.title(for: .normal)
         //to follow
         if title == "FOLLOW" {
+            //add follow information to database
             let object = PFObject(className: "follow")
             object["follower"] = PFUser.current()?.username
             object["following"] = usernameLbl.text!
@@ -49,12 +50,14 @@ class followersCell: UITableViewCell {
             })
         //unfollow
         } else {
+            //find follow information
             let query = PFQuery(className: "follow")
             query.whereKey("follower", equalTo: PFUser.current()!.username!)
             query.whereKey("following", equalTo: usernameLbl.text!)
             query.findObjectsInBackground { (objects, error) in
                 if error == nil {
                     for object in objects! {
+                        //delete follow information
                         object.deleteInBackground(block: { (success, error) in
                             if success {
                                 self.followBtn.setTitle("FOLLOW", for: UIControl.State())
