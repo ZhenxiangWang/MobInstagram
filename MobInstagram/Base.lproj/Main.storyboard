@@ -333,14 +333,6 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XnF-fV-0ZV">
-                                    <rect key="frame" x="159" y="79" width="205" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                    <state key="normal" title="edit profile">
-                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    </state>
-                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="posts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gi8-cs-L6S">
                                     <rect key="frame" x="149" y="50" width="36" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -359,7 +351,6 @@
                             <connections>
                                 <outlet property="avaImg" destination="DRG-89-RpT" id="6Kb-uq-EBF"/>
                                 <outlet property="bioLbl" destination="S7y-lW-99X" id="gdM-cv-0YQ"/>
-                                <outlet property="button" destination="XnF-fV-0ZV" id="Y0E-9f-bBn"/>
                                 <outlet property="followerTitle" destination="5jl-sE-MaI" id="6Qm-Pq-0pH"/>
                                 <outlet property="followers" destination="utt-ds-aJh" id="qTx-f4-jvp"/>
                                 <outlet property="followings" destination="bzb-J4-1Wo" id="Dzn-fG-z5g"/>
@@ -984,11 +975,6 @@
                                                 <action selector="likeBtn_click:" destination="0Xh-6m-hh9" eventType="touchUpInside" id="3eJ-XR-WCV"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yl7-mV-pFR">
-                                            <rect key="frame" x="326" y="413" width="72" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="more" image="more"/>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title label with description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8J-PJ-K78">
                                             <rect key="frame" x="20" y="451" width="360" height="57"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1019,7 +1005,6 @@
                                     <outlet property="dateLbl" destination="Elp-EL-MH6" id="uc5-Hv-PB7"/>
                                     <outlet property="likeBtn" destination="72G-qk-xd1" id="09K-bQ-kxf"/>
                                     <outlet property="likeLbl" destination="9Gq-Se-ATH" id="OtI-gD-L3B"/>
-                                    <outlet property="moreBtn" destination="Yl7-mV-pFR" id="Y6i-CZ-xNo"/>
                                     <outlet property="picImg" destination="EFF-tc-Dkk" id="QaN-0w-DvF"/>
                                     <outlet property="titleLbl" destination="A8J-PJ-K78" id="M6V-tG-mZe"/>
                                     <outlet property="usernameBtn" destination="Suy-kG-fKw" id="AeG-2f-Dm0"/>
@@ -1248,7 +1233,6 @@
         <image name="comment" width="30" height="30"/>
         <image name="feed" width="25" height="25"/>
         <image name="like" width="25" height="25"/>
-        <image name="more" width="30" height="30"/>
         <image name="pbg.jpg" width="200" height="200"/>
         <image name="pp.jpg" width="96" height="96"/>
         <image name="profile" width="25" height="25"/>
