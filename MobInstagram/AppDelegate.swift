@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         Parse.initialize(with: parseConfig)
-        
+        print("test")
         login()
         print("test git")
         
