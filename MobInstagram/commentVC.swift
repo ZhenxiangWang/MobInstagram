@@ -267,7 +267,7 @@ class commentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     }
     
-
+    //clicking username navigate to the user's profile
     @IBAction func usernameBtn_click(_ sender: Any) {
         
         let i = (sender as AnyObject).layer.value(forKey: "index") as! IndexPath

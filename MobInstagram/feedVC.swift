@@ -2,9 +2,9 @@
 //  feedVC.swift
 //  MobInstagram
 //
-//  Created by hha6027875 on 23/9/18.
-//  Copyright © 2018 hha6027875. All rights reserved.
-//
+//  Created by Wenbin Chen on 23/9/18.
+//  Copyright © 2018 Wenbin Chen. All rights reserved.
+//  this file contain the main function of feed page
 
 import UIKit
 import Parse
@@ -13,6 +13,7 @@ class feedVC: UITableViewController {
 
     var refresher = UIRefreshControl()
     
+    //the all information for posts
     var usernameArray = [String]()
     var avaArray = [PFFile]()
     var dateArray = [Date?]()
@@ -20,6 +21,8 @@ class feedVC: UITableViewController {
     var titleArray = [String]()
     var uuidArray = [String]()
     
+    
+    //this is the arraty store the people that the user following
     var followArray = [String]()
     
     var page : Int = 10
@@ -45,7 +48,7 @@ class feedVC: UITableViewController {
     }
     
     @objc func loadPosts(){
-        //step 1
+        //step 1 find the following people
         let followQuery = PFQuery(className: "follow")
         followQuery.whereKey("follower", equalTo: PFUser.current()?.username!)
         followQuery.findObjectsInBackground { (objects, error) in
@@ -57,7 +60,7 @@ class feedVC: UITableViewController {
                 }
                 self.followArray.append((PFUser.current()?.username)!)
                 
-                //step2
+                //step2 according to following people load post
                 let query = PFQuery(className: "posts")
                 query.whereKey("username", containedIn: self.followArray)
                 query.limit = self.page
@@ -94,17 +97,20 @@ class feedVC: UITableViewController {
         }
     }
     
+    //scroll to load more
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y >= scrollView.contentSize.height - self.view.frame.size.height * 2{
             loadMore()
         }
     }
     
+    //load more posts
     func loadMore(){
         
         if page <= uuidArray.count{
+            //increase load number limit
             page = page + 10
-            //step 1
+            //step 1 find the following users
             let followQuery = PFQuery(className: "follow")
             followQuery.whereKey("follower", equalTo: PFUser.current()?.username!)
             followQuery.findObjectsInBackground { (objects, error) in
@@ -116,7 +122,7 @@ class feedVC: UITableViewController {
                     }
                     self.followArray.append((PFUser.current()?.username)!)
                     
-                    //step2
+                    //step2 load the post according to following people
                     let query = PFQuery(className: "posts")
                     query.whereKey("username", containedIn: self.followArray)
                     query.limit = self.page
@@ -154,9 +160,11 @@ class feedVC: UITableViewController {
         }
     }
 
+    //config cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! postCell
         
+        //config each component in cell
         cell.usernameBtn.setTitle(usernameArray[indexPath.row], for: UIControl.State())
         cell.uuidLbl.text = uuidArray[indexPath.row]
         cell.titleLbl.text = titleArray[indexPath.row]
@@ -175,6 +183,7 @@ class feedVC: UITableViewController {
         
         cell.dateLbl.text = "\(String(describing: dateArray[indexPath.row]!))"
         
+        // according to like status config like button
         let didLike = PFQuery(className:"likes")
         didLike.whereKey("by", equalTo: PFUser.current()!.username!)
         didLike.whereKey("to", equalTo: cell.uuidLbl.text!)
@@ -186,12 +195,14 @@ class feedVC: UITableViewController {
             }
         }
         
+        //count likes number
         let countLikes = PFQuery(className: "likes")
         countLikes.whereKey("to", equalTo: cell.uuidLbl.text!)
         countLikes.countObjectsInBackground { (count, error) in
             cell.likeLbl.text = "\(count)"
         }
         
+        //add gesture to like button
         let likeTap  = UITapGestureRecognizer(target: self, action: #selector(feedVC.likeTap))
         likeTap.numberOfTapsRequired = 1
         cell.likeLbl.isUserInteractionEnabled = true
@@ -199,11 +210,12 @@ class feedVC: UITableViewController {
         
         cell.commentBtn.layer.setValue(indexPath, forKey: "index")
         cell.likeLbl.layer.setValue(indexPath, forKey:"index")
-        
-        cell.isUserInteractionEnabled = false
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
     }
     
+    //clicking like label can navigate to the view that list all
+    //users that like this posts
     @objc func likeTap(_ sender: UITapGestureRecognizer){
         let i = (sender.view! as AnyObject).layer.value(forKey: "index") as! IndexPath
         let cell = tableView.cellForRow(at: i) as! postCell
@@ -215,6 +227,7 @@ class feedVC: UITableViewController {
         self.navigationController?.pushViewController(likes, animated: true)
     }
     
+    //clicking coment button can navigate to the view that can comment this post
     @IBAction func commentBtn_click(_ sender: Any) {
         let i = (sender as AnyObject).layer.value(forKey: "index") as! IndexPath
         let cell = tableView.cellForRow(at: i) as! postCell
@@ -226,6 +239,7 @@ class feedVC: UITableViewController {
         self.navigationController?.pushViewController(comment, animated: true)
     }
     
+    //click username can go to their profile page
     @IBAction func usernameBtn_click(_ sender: Any) {
         let title = (sender as AnyObject).title(for: UIControl.State())
         if title == PFUser.current()!.username!{
@@ -238,7 +252,7 @@ class feedVC: UITableViewController {
         }
     }
     
-    
+    //go back to last view
     @objc func back(sender: UIBarButtonItem){
         
         self.navigationController?.popViewController(animated: true)
