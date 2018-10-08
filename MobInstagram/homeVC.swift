@@ -175,7 +175,6 @@ class homeVC: UICollectionViewController {
         header.webTxt.sizeToFit()
         header.bioLbl.text = PFUser.current()?.object(forKey: "bio") as? String
         header.bioLbl.sizeToFit()
-        header.button.setTitle("edit profile", for: UIControl.State())
         
         let avaQuery = PFUser.current()?.object(forKey: "ava") as! PFFile
         avaQuery.getDataInBackground(block: {(data:Data?, error:Error?) -> Void in
