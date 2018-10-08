@@ -2,9 +2,9 @@
 //  usersVC.swift
 //  MobInstagram
 //
-//  Created by hha6027875 on 23/9/18.
-//  Copyright © 2018 hha6027875. All rights reserved.
-//
+//  Created by wenbin Chen on 23/9/18.
+//  Copyright © 2018 wenbin Chen. All rights reserved.
+//  this file contain the main function about search page
 
 import UIKit
 import Parse
@@ -21,6 +21,7 @@ class usersVC: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //config search bar
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         searchBar.sizeToFit()
@@ -32,11 +33,12 @@ class usersVC: UITableViewController, UISearchBarDelegate {
         loadUsers()
     }
     
+    //load the suggest users to follow
     func loadUsers() {
         
         var followerArray = [String]()
         var followerUsers = [String]()
-        
+        //find user that current user following
         let followerQuery = PFQuery(className: "follow")
         followerQuery.whereKey("follower", equalTo: PFUser.current()!.username!)
         followerQuery.findObjectsInBackground { (objects, error) in
@@ -45,7 +47,7 @@ class usersVC: UITableViewController, UISearchBarDelegate {
                     followerArray.append(object.value(forKey: "following") as! String)
                     print(followerArray)
                 }
-                
+                //find the followers that be followed by the users that you follow
                 let followerQuery2 = PFQuery(className: "follow")
                 followerQuery2.whereKey("follower", containedIn: followerArray)
                 followerQuery2.findObjectsInBackground { (objects, error) in
@@ -53,7 +55,7 @@ class usersVC: UITableViewController, UISearchBarDelegate {
                         for object in objects! {
                             followerUsers.append(object.value(forKey: "following") as! String)
                         }
-                        
+                        //find their user information and add to the local
                         let userQuery = PFQuery(className: "_User")
                         userQuery.whereKey("username", containedIn: followerUsers)
                         userQuery.addDescendingOrder("createdAt")
@@ -96,7 +98,7 @@ class usersVC: UITableViewController, UISearchBarDelegate {
         loadUsers()
     }
     
-    // search updated
+    // search updated each time user edit the search field
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // find by username
         if searchBar.text! == "" {
@@ -127,9 +129,8 @@ class usersVC: UITableViewController, UISearchBarDelegate {
         }
     }
     
-
-    // MARK: - Table view data source
-
+    //below are tableview function
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return usernameArray.count
     }
@@ -138,12 +139,11 @@ class usersVC: UITableViewController, UISearchBarDelegate {
         return self.view.frame.size.width / 4
     }
     
+    //config each cell for each users
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! followersCell
-        
-        //cell.followBtn.isHidder = true
-        
+        //set username
         cell.usernameLbl.text = usernameArray[indexPath.row]
         avaArray[indexPath.row].getDataInBackground { (data, error) in
             if error == nil {
@@ -169,6 +169,7 @@ class usersVC: UITableViewController, UISearchBarDelegate {
         return cell
     }
     
+    //select the cell can visit their profile
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! followersCell
         

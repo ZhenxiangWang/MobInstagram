@@ -2,8 +2,8 @@
 //  newsCell.swift
 //  MobInstagram
 //
-//  Created by hha6027875 on 24/9/18.
-//  Copyright © 2018 hha6027875. All rights reserved.
+//  Created by wenbin Chen on 24/9/18.
+//  Copyright © 2018 wenbin Chen. All rights reserved.
 //
 
 import UIKit

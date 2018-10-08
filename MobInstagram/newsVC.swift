@@ -32,6 +32,7 @@ class newsVC: UITableViewController {
 
     }
     
+    //load the activity
     func loadNews() {
         var followingUsers = [String]()
         let followingQuery = PFQuery(className: "follow")
@@ -40,13 +41,13 @@ class newsVC: UITableViewController {
             for object in objects! {
                 followingUsers.append(object.object(forKey: "following") as! String)
             }
-            
+            //the news about the following people
             let queryf = PFQuery(className: "news")
             queryf.whereKey("by", containedIn: followingUsers)
-            
+            //the news about the current users
             let queryU = PFQuery(className: "news")
             queryU.whereKey("to", equalTo: PFUser.current()!.username!)
-            
+            //combine two query
             let query = PFQuery.orQuery(withSubqueries: [queryf, queryU])
             query.addDescendingOrder("createdAt")
             query.limit = 30

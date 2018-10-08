@@ -19,6 +19,7 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
     @IBOutlet var contrastSlid: UISlider!
     @IBOutlet var brightSlid: UISlider!
     
+    //variable store the picked photo
     var img : UIImage = UIImage(named: "pbg.jpg")!
     var ciImage : CIImage = CIImage()
     
@@ -40,6 +41,7 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
         
     }
     
+    //select image from camera or album
     @objc func selectImg(){
         var alert: UIAlertController!
         alert = UIAlertController(title: "Pick Image", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
@@ -56,6 +58,7 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
         self.present(alert, animated: true, completion: nil)
     }
     
+    //pick image from album
     @objc func albumImg(){
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -64,6 +67,7 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
         present(picker, animated: true, completion: nil)
     }
     
+    //pick image from camera
     @objc func cameraImg(){
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let imagePicker = UIImagePickerController()
@@ -84,12 +88,14 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
         }
     }
     
+    //delegate function
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picImg.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         img = picImg.image!
         self.dismiss(animated: true, completion: nil)
     }
 
+    //clicking confirm button to send image to upload view and go to that view
     @IBAction func confirmBtn_click(_ sender: Any) {
         let uploadVC = self.storyboard?.instantiateViewController(withIdentifier: "uploadVC") as! uploadVC
         uploadVC.img = picImg.image!
@@ -97,6 +103,7 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
         self.navigationController?.pushViewController(uploadVC, animated: true)
     }
     
+    //three filters
     @IBAction func filter1Btn_click(_ sender: Any) {
         let ciImage = CIImage(image: img)
         let color = CIColor(red: 0.8, green: 0.6, blue: 0.4, alpha: 0.5)
@@ -154,6 +161,7 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
         filter3Btn.backgroundColor = .blue
     }
     
+    //change brightness
     @IBAction func brightValueChanged(_ sender: Any) {
         let ciImage = self.ciImage
         let filter = CIFilter(name: "CIColorControls")
@@ -165,6 +173,7 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
         
     }
     
+    //change contrast
     @IBAction func contrastValueChanged(_ sender: Any) {
         let ciImage = self.ciImage
         let filter = CIFilter(name: "CIColorControls")
@@ -174,14 +183,4 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
         picImg.image = UIImage(ciImage:outImage!)
         self.ciImage = outImage!
     }
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
-    return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
-    return input.rawValue
 }
