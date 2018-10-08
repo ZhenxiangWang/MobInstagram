@@ -2,14 +2,13 @@
 //  uploadVC.swift
 //  MobInstagram
 //
-//  Created by hha6027875 on 19/9/18.
-//  Copyright © 2018 hha6027875. All rights reserved.
-//
+//  Created by Wenbin Chen on 19/9/18.
+//  Copyright © 2018 Wenbin Chen. All rights reserved.
+//  this file contain the main function for upload post view controller
+//  receive the edited from imageEditVC view controller
 
 import UIKit
 import Parse
-
-private let reuseIdentifier = "Cell"
 
 class uploadVC: UIViewController {
 
@@ -35,7 +34,7 @@ class uploadVC: UIViewController {
         
 
     }
-    
+    //hidd key board
     @objc func hideKeyboardTap(){
         self.view.endEditing(true)
     }
@@ -74,7 +73,7 @@ class uploadVC: UIViewController {
                 print (error!.localizedDescription)
             }
         }
-        
+        //save this information as an activity
         let newsObj = PFObject(className: "news")
         newsObj["by"] = PFUser.current()?.username
         newsObj["ava"] = PFUser.current()?.object(forKey: "ava") as! PFFile

@@ -2,8 +2,8 @@
 //  followersVC.swift
 //  MobInstagram
 //
-//  Created by hha6027875 on 16/9/18.
-//  Copyright © 2018 hha6027875. All rights reserved.
+//  Created by Wenbin Chen on 16/9/18.
+//  Copyright © 2018 Wenbin Chen. All rights reserved.
 //
 
 import UIKit

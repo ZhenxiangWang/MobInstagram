@@ -28,17 +28,12 @@ class postCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    
+    //like or unlike a post
     @IBAction func likeBtn_click(_ sender: Any) {
         let title = (sender as AnyObject).title(for: UIControl.State())
-        if title == "like" {
+        if title == "like" {//like the post
+            //save the like information
             let object = PFObject(className: "likes")
             object["by"] = PFUser.current()?.username
             object["to"] = uuidLbl.text
@@ -48,7 +43,7 @@ class postCell: UITableViewCell {
                     self.likeBtn.setTitle("unlike", for: UIControl.State())
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "liked"), object: nil)
                     
-                    // send notification as like
+                    // send notification as unlike
                     if self.usernameBtn.titleLabel?.text != PFUser.current()?.username {
                         let newsObj = PFObject(className: "news")
                         newsObj["by"] = PFUser.current()?.username
@@ -62,12 +57,14 @@ class postCell: UITableViewCell {
                     }
                 }
             }
-        } else{
+        } else{//unlike the post
+            //search the like information and delete it
             let query = PFQuery(className: "likes")
             query.whereKey("by", equalTo: PFUser.current()!.username!)
             query.whereKey("to", equalTo: uuidLbl.text!)
             query.findObjectsInBackground { (objects, error) in
                 for object in objects!{
+                    //delete
                     object.deleteInBackground(block: { (success, error) in
                         if success{
                             print("disliked")

@@ -2,8 +2,8 @@
 //  commentVC.swift
 //  MobInstagram
 //
-//  Created by hha6027875 on 20/9/18.
-//  Copyright © 2018 hha6027875. All rights reserved.
+//  Created by wenbin chen on 20/9/18.
+//  Copyright © 2018 wenbin Chen. All rights reserved.
 //
 
 import UIKit
@@ -19,16 +19,17 @@ class commentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var sendBtn: UIButton!
     var refresher = UIRefreshControl()
     
+    //this variable is for rising the input text field when tap the
+    //text field and keyboard shows up
     var tableViewHeight : CGFloat = 0
     var commentY : CGFloat = 0
     var commentHeight : CGFloat = 0
     
+    //this arrays restore all the comment information
     var usernameArray = [String]()
     var avaArray = [PFFile]()
     var commentArray = [String]()
     var dateArray = [Date?]()
-    
-    var keyboard = CGRect()
     
     var page : Int32 = 15
     
@@ -57,7 +58,7 @@ class commentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         loadComments()
         
     }
-    
+    //go back function
     @objc func back(_ sender: UIBarButtonItem){
         self.navigationController?.popViewController(animated: true)
         
@@ -84,7 +85,6 @@ class commentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // func loading when keyboard is hidden
     @objc func keyboardWillHide(_ notification : Notification) {
-        
         // move UI down
         UIView.animate(withDuration: 0.4, animations: { () -> Void in
             self.commentTxt.frame.origin.y = self.commentY

@@ -199,6 +199,8 @@ class feedVC: UITableViewController {
         
         cell.commentBtn.layer.setValue(indexPath, forKey: "index")
         cell.likeLbl.layer.setValue(indexPath, forKey:"index")
+        
+        cell.isUserInteractionEnabled = false
         return cell
     }
     

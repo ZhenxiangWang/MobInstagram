@@ -2,8 +2,8 @@
 //  guestVC.swift
 //  MobInstagram
 //
-//  Created by hha6027875 on 17/9/18.
-//  Copyright © 2018 hha6027875. All rights reserved.
+//  Created by Wenbin Chen on 17/9/18.
+//  Copyright © 2018 Wenbin Chen. All rights reserved.
 //
 
 import UIKit
@@ -18,8 +18,9 @@ class guestVC: UICollectionViewController {
     var refresher : UIRefreshControl?
     var page : Int = 10
     
-    //
+    //the uuid for each posts
     var uuidArray = [String]()
+    //the pic for each posts
     var picArray = [PFFile]()
     
     // default function

@@ -88,7 +88,7 @@ class usersVC: UITableViewController, UISearchBarDelegate {
     
     // clicked cancel button
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-               
+        self.searchBar.endEditing(true)
         // reset text
         searchBar.text = ""
         
