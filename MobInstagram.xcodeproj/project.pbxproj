@@ -113,6 +113,84 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		434491B4216D95E4003D5F60 /* signIn */ = {
+			isa = PBXGroup;
+			children = (
+				43C4DA9021468EB700E00D3A /* SignInVC.swift */,
+				43C4DA9221468ECD00E00D3A /* SignUpVC.swift */,
+				43C4DA9421468EEB00E00D3A /* ResetPasswordVC.swift */,
+			);
+			path = signIn;
+			sourceTree = "<group>";
+		};
+		434491B5216D9626003D5F60 /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				43C4DAD3214D02B400E00D3A /* homeVC.swift */,
+				43C4DAD5214D02E500E00D3A /* headerView.swift */,
+				43C4DAD7214D078000E00D3A /* pictureCell.swift */,
+				43C4DADB214DDDD200E00D3A /* followersCell.swift */,
+				43C4DADD214E163500E00D3A /* followersVC.swift */,
+				43C4DAE3214F984700E00D3A /* guestVC.swift */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
+		434491B6216D9643003D5F60 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				43E2FE922157A0DE000BBBCA /* usersVC.swift */,
+			);
+			path = search;
+			sourceTree = "<group>";
+		};
+		434491B7216D9658003D5F60 /* post */ = {
+			isa = PBXGroup;
+			children = (
+				43C4DAE92152322B00E00D3A /* postVC.swift */,
+				43C4DAEB2152325F00E00D3A /* postCell.swift */,
+				43E2FE8C2153A36F000BBBCA /* commentVC.swift */,
+				43E2FE8E2153A396000BBBCA /* commentCell.swift */,
+			);
+			path = post;
+			sourceTree = "<group>";
+		};
+		434491B9216D967D003D5F60 /* upload */ = {
+			isa = PBXGroup;
+			children = (
+				43C4DAE72151D91300E00D3A /* uploadVC.swift */,
+				43E2FE98215A0449000BBBCA /* imageEditVC.swift */,
+			);
+			path = upload;
+			sourceTree = "<group>";
+		};
+		434491BA216D9693003D5F60 /* activity */ = {
+			isa = PBXGroup;
+			children = (
+				43E2FE9421589180000BBBCA /* newsVC.swift */,
+				43E2FE96215891AC000BBBCA /* newsCell.swift */,
+			);
+			path = activity;
+			sourceTree = "<group>";
+		};
+		434491BC216D96B6003D5F60 /* feed */ = {
+			isa = PBXGroup;
+			children = (
+				43E2FE9021577D9C000BBBCA /* feedVC.swift */,
+			);
+			path = feed;
+			sourceTree = "<group>";
+		};
+		434491BD216D96C1003D5F60 /* picFile */ = {
+			isa = PBXGroup;
+			children = (
+				43C4DAE52151D8DF00E00D3A /* pbg.jpg */,
+				43C4DAD121491DE300E00D3A /* pp.jpg */,
+				43E2FE9C215A3C3C000BBBCA /* grid.png */,
+			);
+			path = picFile;
+			sourceTree = "<group>";
+		};
 		43C4DA7221468E7C00E00D3A = {
 			isa = PBXGroup;
 			children = (
@@ -138,28 +216,14 @@
 				43C4DA8521468E7E00E00D3A /* Assets.xcassets */,
 				43C4DA8721468E7E00E00D3A /* LaunchScreen.storyboard */,
 				43C4DA8A21468E7E00E00D3A /* Info.plist */,
-				43C4DA9021468EB700E00D3A /* SignInVC.swift */,
-				43C4DA9221468ECD00E00D3A /* SignUpVC.swift */,
-				43C4DA9421468EEB00E00D3A /* ResetPasswordVC.swift */,
-				43C4DAE52151D8DF00E00D3A /* pbg.jpg */,
-				43C4DAD121491DE300E00D3A /* pp.jpg */,
-				43E2FE9C215A3C3C000BBBCA /* grid.png */,
-				43C4DAD3214D02B400E00D3A /* homeVC.swift */,
-				43C4DAD5214D02E500E00D3A /* headerView.swift */,
-				43C4DAD7214D078000E00D3A /* pictureCell.swift */,
-				43C4DADB214DDDD200E00D3A /* followersCell.swift */,
-				43C4DADD214E163500E00D3A /* followersVC.swift */,
-				43C4DAE3214F984700E00D3A /* guestVC.swift */,
-				43C4DAE72151D91300E00D3A /* uploadVC.swift */,
-				43C4DAE92152322B00E00D3A /* postVC.swift */,
-				43C4DAEB2152325F00E00D3A /* postCell.swift */,
-				43E2FE8C2153A36F000BBBCA /* commentVC.swift */,
-				43E2FE8E2153A396000BBBCA /* commentCell.swift */,
-				43E2FE9021577D9C000BBBCA /* feedVC.swift */,
-				43E2FE922157A0DE000BBBCA /* usersVC.swift */,
-				43E2FE9421589180000BBBCA /* newsVC.swift */,
-				43E2FE96215891AC000BBBCA /* newsCell.swift */,
-				43E2FE98215A0449000BBBCA /* imageEditVC.swift */,
+				434491B4216D95E4003D5F60 /* signIn */,
+				434491BC216D96B6003D5F60 /* feed */,
+				434491B6216D9643003D5F60 /* search */,
+				434491B9216D967D003D5F60 /* upload */,
+				434491BA216D9693003D5F60 /* activity */,
+				434491B5216D9626003D5F60 /* profile */,
+				434491B7216D9658003D5F60 /* post */,
+				434491BD216D96C1003D5F60 /* picFile */,
 			);
 			path = MobInstagram;
 			sourceTree = "<group>";
@@ -422,7 +486,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2EZF3PW52D;
+				DEVELOPMENT_TEAM = C32X58N3A9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MobInstagram",
@@ -432,7 +496,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "wenbinc.MobInstagram-new";
+				PRODUCT_BUNDLE_IDENTIFIER = wenbinc.MobInstagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -444,7 +508,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2EZF3PW52D;
+				DEVELOPMENT_TEAM = C32X58N3A9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MobInstagram",
@@ -454,7 +518,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "wenbinc.MobInstagram-new";
+				PRODUCT_BUNDLE_IDENTIFIER = wenbinc.MobInstagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
