@@ -566,8 +566,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pt7-8P-IA3">
-                                            <rect key="frame" x="29" y="416" width="52" height="25"/>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pt7-8P-IA3">
+                                            <rect key="frame" x="20" y="416" width="69" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="like" image="like">
                                                 <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -585,13 +585,6 @@
                                             <connections>
                                                 <action selector="commentBtn_click:" destination="C6o-gh-0Op" eventType="touchUpInside" id="p1J-X2-KfI"/>
                                             </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWd-HK-zy2">
-                                            <rect key="frame" x="326" y="413" width="72" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="more" image="more">
-                                                <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title label with description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSP-HC-QUc">
                                             <rect key="frame" x="20" y="451" width="360" height="57"/>
@@ -615,7 +608,6 @@
                                     <outlet property="dateLbl" destination="dMo-5p-KlD" id="smg-VK-B2e"/>
                                     <outlet property="likeBtn" destination="pt7-8P-IA3" id="4YS-4h-Fsv"/>
                                     <outlet property="likeLbl" destination="ZId-Db-ZPH" id="cIy-VC-dLR"/>
-                                    <outlet property="moreBtn" destination="bWd-HK-zy2" id="nmi-B0-f1e"/>
                                     <outlet property="picImg" destination="BzW-ye-Wbt" id="Var-Jx-0z6"/>
                                     <outlet property="titleLbl" destination="WSP-HC-QUc" id="3gx-d8-eR5"/>
                                     <outlet property="usernameBtn" destination="BUc-m3-HeR" id="xhq-1m-Pup"/>
@@ -631,7 +623,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SWo-VY-332" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5459" y="1560"/>
+            <point key="canvasLocation" x="5457.971014492754" y="1559.5108695652175"/>
         </scene>
         <!--CommentVC-->
         <scene sceneID="dE5-rJ-Q7b">
@@ -989,7 +981,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72G-qk-xd1">
-                                            <rect key="frame" x="30" y="417" width="68" height="25"/>
+                                            <rect key="frame" x="20" y="417" width="81" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="like" image="like">
                                                 <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1269,7 +1261,6 @@
         <image name="comment" width="30" height="30"/>
         <image name="feed" width="25" height="25"/>
         <image name="like" width="25" height="25"/>
-        <image name="more" width="30" height="30"/>
         <image name="pbg.jpg" width="200" height="200"/>
         <image name="pp.jpg" width="96" height="96"/>
         <image name="profile" width="25" height="25"/>
