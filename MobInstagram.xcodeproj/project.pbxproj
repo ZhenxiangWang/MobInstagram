@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		434491C7216E065B003D5F60 /* PeerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434491BF216E065B003D5F60 /* PeerService.swift */; };
+		434491C8216E065B003D5F60 /* CSBigRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434491C0216E065B003D5F60 /* CSBigRoundedButton.swift */; };
+		434491C9216E065B003D5F60 /* FloatingPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434491C1216E065B003D5F60 /* FloatingPictureViewController.swift */; };
+		434491CA216E065B003D5F60 /* CSOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434491C2216E065B003D5F60 /* CSOnboardingViewController.swift */; };
+		434491CB216E065B003D5F60 /* UIImage+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434491C3216E065B003D5F60 /* UIImage+Orientation.swift */; };
+		434491CC216E065B003D5F60 /* LoadingOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434491C4216E065B003D5F60 /* LoadingOverlayViewController.swift */; };
+		434491CD216E065B003D5F60 /* DemoFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434491C5216E065B003D5F60 /* DemoFlowController.swift */; };
+		434491CE216E065B003D5F60 /* UIViewController+Children.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434491C6216E065B003D5F60 /* UIViewController+Children.swift */; };
 		43C4DA7F21468E7C00E00D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C4DA7E21468E7C00E00D3A /* AppDelegate.swift */; };
 		43C4DA8421468E7C00E00D3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43C4DA8221468E7C00E00D3A /* Main.storyboard */; };
 		43C4DA8621468E7E00E00D3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C4DA8521468E7E00E00D3A /* Assets.xcassets */; };
@@ -48,6 +56,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		434491BF216E065B003D5F60 /* PeerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerService.swift; sourceTree = "<group>"; };
+		434491C0216E065B003D5F60 /* CSBigRoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSBigRoundedButton.swift; sourceTree = "<group>"; };
+		434491C1216E065B003D5F60 /* FloatingPictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingPictureViewController.swift; sourceTree = "<group>"; };
+		434491C2216E065B003D5F60 /* CSOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSOnboardingViewController.swift; sourceTree = "<group>"; };
+		434491C3216E065B003D5F60 /* UIImage+Orientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Orientation.swift"; sourceTree = "<group>"; };
+		434491C4216E065B003D5F60 /* LoadingOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlayViewController.swift; sourceTree = "<group>"; };
+		434491C5216E065B003D5F60 /* DemoFlowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFlowController.swift; sourceTree = "<group>"; };
+		434491C6216E065B003D5F60 /* UIViewController+Children.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Children.swift"; sourceTree = "<group>"; };
 		43C4DA7B21468E7C00E00D3A /* MobInstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobInstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C4DA7E21468E7C00E00D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43C4DA8321468E7C00E00D3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -191,6 +207,21 @@
 			path = picFile;
 			sourceTree = "<group>";
 		};
+		434491BE216E05E0003D5F60 /* bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				434491C0216E065B003D5F60 /* CSBigRoundedButton.swift */,
+				434491C2216E065B003D5F60 /* CSOnboardingViewController.swift */,
+				434491C5216E065B003D5F60 /* DemoFlowController.swift */,
+				434491C1216E065B003D5F60 /* FloatingPictureViewController.swift */,
+				434491C4216E065B003D5F60 /* LoadingOverlayViewController.swift */,
+				434491BF216E065B003D5F60 /* PeerService.swift */,
+				434491C3216E065B003D5F60 /* UIImage+Orientation.swift */,
+				434491C6216E065B003D5F60 /* UIViewController+Children.swift */,
+			);
+			path = bluetooth;
+			sourceTree = "<group>";
+		};
 		43C4DA7221468E7C00E00D3A = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +247,7 @@
 				43C4DA8521468E7E00E00D3A /* Assets.xcassets */,
 				43C4DA8721468E7E00E00D3A /* LaunchScreen.storyboard */,
 				43C4DA8A21468E7E00E00D3A /* Info.plist */,
+				434491BE216E05E0003D5F60 /* bluetooth */,
 				434491B4216D95E4003D5F60 /* signIn */,
 				434491BC216D96B6003D5F60 /* feed */,
 				434491B6216D9643003D5F60 /* search */,
@@ -322,25 +354,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				434491CD216E065B003D5F60 /* DemoFlowController.swift in Sources */,
 				43E2FE8F2153A396000BBBCA /* commentCell.swift in Sources */,
 				43C4DAD8214D078000E00D3A /* pictureCell.swift in Sources */,
 				43C4DAE4214F984700E00D3A /* guestVC.swift in Sources */,
 				43E2FE9521589180000BBBCA /* newsVC.swift in Sources */,
+				434491C8216E065B003D5F60 /* CSBigRoundedButton.swift in Sources */,
 				43C4DA9321468ECD00E00D3A /* SignUpVC.swift in Sources */,
 				43E2FE9121577D9C000BBBCA /* feedVC.swift in Sources */,
 				43C4DAEC2152325F00E00D3A /* postCell.swift in Sources */,
 				43E2FE8D2153A36F000BBBCA /* commentVC.swift in Sources */,
 				43C4DADC214DDDD200E00D3A /* followersCell.swift in Sources */,
 				43C4DADE214E163500E00D3A /* followersVC.swift in Sources */,
+				434491C9216E065B003D5F60 /* FloatingPictureViewController.swift in Sources */,
+				434491CB216E065B003D5F60 /* UIImage+Orientation.swift in Sources */,
 				43E2FE97215891AC000BBBCA /* newsCell.swift in Sources */,
 				43C4DA9121468EB700E00D3A /* SignInVC.swift in Sources */,
 				43C4DAE82151D91300E00D3A /* uploadVC.swift in Sources */,
 				43C4DAD4214D02B400E00D3A /* homeVC.swift in Sources */,
+				434491C7216E065B003D5F60 /* PeerService.swift in Sources */,
+				434491CE216E065B003D5F60 /* UIViewController+Children.swift in Sources */,
 				43E2FE99215A0449000BBBCA /* imageEditVC.swift in Sources */,
 				43C4DA7F21468E7C00E00D3A /* AppDelegate.swift in Sources */,
 				43C4DA9521468EEB00E00D3A /* ResetPasswordVC.swift in Sources */,
 				43C4DAEA2152322B00E00D3A /* postVC.swift in Sources */,
 				43E2FE932157A0DE000BBBCA /* usersVC.swift in Sources */,
+				434491CA216E065B003D5F60 /* CSOnboardingViewController.swift in Sources */,
+				434491CC216E065B003D5F60 /* LoadingOverlayViewController.swift in Sources */,
 				43C4DAD6214D02E500E00D3A /* headerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -252,6 +252,11 @@ class feedVC: UITableViewController {
         }
     }
     
+    @IBAction func blueToothBtn_click(_ sender: Any) {
+        let demoFlowController = self.storyboard?.instantiateViewController(withIdentifier: "DemoFlowController") as! DemoFlowController
+        self.navigationController?.pushViewController(demoFlowController, animated: true)
+        
+    }
     //go back to last view
     @objc func back(sender: UIBarButtonItem){
         
