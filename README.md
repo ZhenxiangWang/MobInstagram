@@ -7,16 +7,16 @@ This is a simple instagram App
 
 ## There are four test users
 
-  username: tony
+  username: tony,
   password: tony 
   
-  username: bin 
+  username: bin, 
   password: bin
   
-  username: fang 
+  username: fang, 
   password: fang
   
-  username: yudong
+  username: yudong,
   password: yudong
   
   
