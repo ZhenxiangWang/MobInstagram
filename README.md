@@ -1,7 +1,7 @@
 # MobInstagram
 Mobile Assignment
 
-Members:   Wenbin Chen     Yudong Liu      Zhenxiang Wang       Yan Jiang
+Members:   Wenbin Chen,     Yudong Liu,      Zhenxiang Wang,       Yan Jiang
 
 This is a simple instagram App
 
@@ -20,5 +20,5 @@ This is a simple instagram App
   password: yudong
   
   
-
+## Reminding
 The sign in process may take a while, please wait one or two minutes.
