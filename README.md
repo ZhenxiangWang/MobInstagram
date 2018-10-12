@@ -1,10 +1,12 @@
 # MobInstagram
 Mobile Assignment
 
-member:   wenbinChen     yudongLiu      zhenxiangWang       yanJiang
+Members:   Wenbin Chen     Yudong Liu      Zhenxiang Wang       Yan Jiang
 
 This is a simple instagram App
-There four test users:
+
+## There four test users:
+
   username: tony
   password: tony 
   
