@@ -8,8 +8,8 @@ class DemoFlowController: UIViewController {
         return UserDefaults.standard.bool(forKey: "DemoMode")
     }
 
-    private lazy var homeViewController: CSOnboardingViewController = {
-        let c = CSOnboardingViewController()
+    private lazy var homeViewController: CSOnboardingVC = {
+        let c = CSOnboardingVC()
 
         c.title = "Devices"
 
@@ -97,10 +97,10 @@ class DemoFlowController: UIViewController {
         })
     }
 
-    private lazy var loadingController = LoadingOverlayViewController()
+    private lazy var loadingController = LoadingOverlayVC()
 
     private func transitionIntoConnectingState(for button: CSBigRoundedButton) {
-        loadingController = LoadingOverlayViewController()
+        loadingController = LoadingOverlayVC()
         loadingController.title = "Connecting"
 
         installChild(loadingController)
@@ -144,12 +144,12 @@ class DemoFlowController: UIViewController {
         }
     }
 
-    private lazy var receivedImageController = FloatingPictureViewController()
+    private lazy var receivedImageController = FloatingPictureVC()
 
     private func didReceiveImage(at url: URL) {
         guard let image = UIImage(contentsOfFile: url.path) else { return }
 
-        receivedImageController = FloatingPictureViewController()
+        receivedImageController = FloatingPictureVC()
 
         installChild(receivedImageController)
 

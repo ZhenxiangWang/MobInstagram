@@ -2,7 +2,7 @@
 
 import UIKit
 
-open class CSOnboardingViewController: UIViewController {
+open class CSOnboardingVC: UIViewController {
 
     private struct Metrics {
         static let buttonSpacing: CGFloat = 14
@@ -76,8 +76,7 @@ open class CSOnboardingViewController: UIViewController {
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(title, for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-
+        button.backgroundColor = UIColor.black
         button.alpha = 0
         self.buttonsStackView.addArrangedSubview(button)
 

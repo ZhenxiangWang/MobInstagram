@@ -2,7 +2,7 @@
 
 import UIKit
 
-class LoadingOverlayViewController: UIViewController {
+class LoadingOverlayVC: UIViewController {
 
     private lazy var stackView: UIStackView = {
         let v = UIStackView(arrangedSubviews: [spinner, statusLabel])

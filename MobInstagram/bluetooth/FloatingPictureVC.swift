@@ -1,7 +1,7 @@
 
 import UIKit
 
-class FloatingPictureViewController: UIViewController {
+class FloatingPictureVC: UIViewController {
 
     enum AnimationOrigin: Int {
         case top
