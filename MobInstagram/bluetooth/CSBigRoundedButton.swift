@@ -1,6 +1,3 @@
-//
-//  CSBigRoundedButton.swift
-//  CutenessKit
 
 
 import UIKit

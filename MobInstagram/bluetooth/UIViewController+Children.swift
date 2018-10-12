@@ -1,7 +1,3 @@
-//
-//  UIViewController+Children.swift
-//  MultipeerDemo
-
 
 import UIKit
 

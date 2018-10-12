@@ -1,7 +1,4 @@
-//
-//  PeerService.swift
-//  MultipeerDemo
-//
+
 import UIKit
 import MultipeerConnectivity
 

@@ -1,6 +1,3 @@
-//
-//  UIImage+Orientation.swift
-//  MultipeerDemo
 
 
 import UIKit

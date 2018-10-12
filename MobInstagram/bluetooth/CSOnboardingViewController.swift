@@ -1,7 +1,3 @@
-//
-//  CSOnboardingViewController.swift
-//  CutenessKit
-//
 
 
 import UIKit

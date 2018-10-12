@@ -1,7 +1,3 @@
-//
-//  DemoFlowController.swift
-//  MultipeerDemo
-
 
 import UIKit
 import MobileCoreServices

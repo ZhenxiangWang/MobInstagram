@@ -1,6 +1,3 @@
-//
-//  FloatingPictureViewController.swift
-//  MultipeerDemo
 
 import UIKit
 

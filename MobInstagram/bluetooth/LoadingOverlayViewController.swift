@@ -1,7 +1,3 @@
-//
-//  LoadingOverlayViewController.swift
-//  MultipeerDemo
-//
 
 
 import UIKit
