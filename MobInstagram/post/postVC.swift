@@ -139,7 +139,30 @@ class postVC: UITableViewController {
             }
         }
         
-        cell.dateLbl.text = "\(String(describing: dateArray[indexPath.row]!))"
+        //load date
+        let from = dateArray[indexPath.row]
+        let now = Date()
+        let components : NSCalendar.Unit = [.second, .minute, .hour, .day, .weekOfMonth]
+        let difference = (Calendar.current as NSCalendar).components(components, from: from!, to: now, options: [])
+        
+        if difference.second! <= 0 {
+            cell.dateLbl.text = "now"
+        }
+        if difference.second! > 0 && difference.minute! == 0 {
+            cell.dateLbl.text = "\(String(describing: difference.second!))s."
+        }
+        if difference.minute! > 0 && difference.hour! == 0 {
+            cell.dateLbl.text = "\(String(describing: difference.minute!))m."
+        }
+        if difference.hour! > 0 && difference.day! == 0 {
+            cell.dateLbl.text = "\(String(describing: difference.hour!))h."
+        }
+        if difference.day! > 0 && difference.weekOfMonth! == 0 {
+            cell.dateLbl.text = "\(String(describing: difference.day!))d."
+        }
+        if difference.weekOfMonth! > 0 {
+            cell.dateLbl.text = "\(String(describing: difference.weekOfMonth!))w."
+        }
         
         let didLike = PFQuery(className:"likes")
         didLike.whereKey("by", equalTo: PFUser.current()!.username!)

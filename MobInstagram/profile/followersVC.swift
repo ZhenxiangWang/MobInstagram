@@ -185,6 +185,9 @@ class followersVC: UITableViewController {
             }
         })
         
+        cell.followBtn.layer.cornerRadius = cell.followBtn.frame.size.width / 8
+        cell.followBtn.clipsToBounds = true
+        
         if cell.usernameLbl.text == PFUser.current()?.username {
             cell.followBtn.isHidden = true
         }

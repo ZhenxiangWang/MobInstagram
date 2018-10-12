@@ -21,7 +21,8 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
     
     //variable store the picked photo
     var img : UIImage = UIImage(named: "pbg.jpg")!
-    var ciImage : CIImage = CIImage()
+    var filteredCIImage : CIImage = CIImage()
+    var adjustedCIImage : CIImage = CIImage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +93,8 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picImg.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         img = picImg.image!
+        self.filteredCIImage = CIImage(image: img)!
+        self.adjustedCIImage = CIImage(image: img)!
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -99,7 +102,7 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
     @IBAction func confirmBtn_click(_ sender: Any) {
         let uploadVC = self.storyboard?.instantiateViewController(withIdentifier: "uploadVC") as! uploadVC
         uploadVC.img = picImg.image!
-        uploadVC.ciImage = self.ciImage
+        uploadVC.ciImage = self.adjustedCIImage
         self.navigationController?.pushViewController(uploadVC, animated: true)
     }
     
@@ -113,7 +116,8 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
         filter?.setValue(ciImage, forKey: kCIInputImageKey)
         let outImage = filter?.outputImage
         picImg.image = UIImage(ciImage:outImage!)
-        self.ciImage = outImage!
+        self.filteredCIImage = outImage!
+        self.adjustedCIImage = outImage!
         
         filter1Btn.setTitleColor(.white, for: UIControl.State())
         filter1Btn.backgroundColor = .blue
@@ -132,7 +136,8 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
         filter?.setValue(ciImage, forKey: kCIInputImageKey)
         let outImage = filter?.outputImage
         picImg.image = UIImage(ciImage:outImage!)
-        self.ciImage = outImage!
+        self.filteredCIImage = outImage!
+        self.adjustedCIImage = outImage!
         
         filter1Btn.setTitleColor(.blue, for: UIControl.State())
         filter1Btn.backgroundColor = .white
@@ -151,7 +156,8 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
         filter?.setValue(ciImage, forKey: kCIInputImageKey)
         let outImage = filter?.outputImage
         picImg.image = UIImage(ciImage:outImage!)
-        self.ciImage = outImage!
+        self.filteredCIImage = outImage!
+        self.adjustedCIImage = outImage!
         
         filter1Btn.setTitleColor(.blue, for: UIControl.State())
         filter1Btn.backgroundColor = .white
@@ -163,24 +169,24 @@ class imageEditVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
     
     //change brightness
     @IBAction func brightValueChanged(_ sender: Any) {
-        let ciImage = self.ciImage
+        let ciImage = self.filteredCIImage
         let filter = CIFilter(name: "CIColorControls")
         filter?.setValue(brightSlid.value, forKey: kCIInputBrightnessKey)
         filter?.setValue(ciImage, forKey: kCIInputImageKey)
         let outImage = filter?.outputImage
         picImg.image = UIImage(ciImage:outImage!)
-        self.ciImage = outImage!
+        self.adjustedCIImage = outImage!
         
     }
     
     //change contrast
     @IBAction func contrastValueChanged(_ sender: Any) {
-        let ciImage = self.ciImage
+        let ciImage = self.filteredCIImage
         let filter = CIFilter(name: "CIColorControls")
         filter?.setValue(contrastSlid.value, forKey: kCIInputContrastKey)
         filter?.setValue(ciImage, forKey: kCIInputImageKey)
         let outImage = filter?.outputImage
         picImg.image = UIImage(ciImage:outImage!)
-        self.ciImage = outImage!
+        self.adjustedCIImage = outImage!
     }
 }

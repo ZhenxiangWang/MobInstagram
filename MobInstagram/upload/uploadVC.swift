@@ -50,7 +50,7 @@ class uploadVC: UIViewController {
         object["uuid"] = "\(PFUser.current()!.username!)\(UUID().uuidString)"
         
         if titleTxt.text.isEmpty{
-            object["title"] = ""
+            return
         } else {
             object["title"] = titleTxt.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         }
@@ -83,6 +83,9 @@ class uploadVC: UIViewController {
         newsObj["type"] = "post"
         newsObj["checked"] = "no"
         newsObj.saveEventually()
+        
+        picImg.image = UIImage(named: "pbg.jpg")
+        titleTxt.text = nil
     }
 
 }
