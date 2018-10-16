@@ -66,6 +66,8 @@ class uploadVC: UIViewController {
         object.saveInBackground { (success, error) in
             if error == nil {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "uploaded"), object: nil)
+                self.picImg.image = UIImage(named: "pbg.jpg")
+                self.titleTxt.text = nil
                 self.tabBarController!.selectedIndex = 0
                 
                 self.viewDidLoad()
@@ -84,8 +86,6 @@ class uploadVC: UIViewController {
         newsObj["checked"] = "no"
         newsObj.saveEventually()
         
-        picImg.image = UIImage(named: "pbg.jpg")
-        titleTxt.text = nil
     }
 
 }
