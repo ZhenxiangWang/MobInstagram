@@ -17,7 +17,8 @@ xcode 10.0
 
 ## There are four test users
 
-  username: tony   (you can use this one to test)
+  (you can use this one to test)
+  username: tony   
   password: tony 
   
   username: bin 
