@@ -5,6 +5,9 @@ Members:   Wenbin Chen,     Yudong Liu,      Zhenxiang Wang,       Yan Jiang
 
 This is a simple instagram App
 
+#youtube video
+https://youtu.be/V4kD2nAMP9U
+
 # server
 data base server is Parse server which deployed in Heroku.
 
