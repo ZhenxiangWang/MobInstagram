@@ -33,3 +33,8 @@ xcode 10.0
   
 ## Reminding
 The sign in process may take several minutes, please wait.
+
+
+## Reference
+The implementation of bluetooth refers to:
+https://github.com/insidegui/MultipeerDemo
