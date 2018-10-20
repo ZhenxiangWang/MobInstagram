@@ -24,6 +24,8 @@ class postCell: UITableViewCell {
     @IBOutlet var usernameBtn: UIButton!
     @IBOutlet var avaImg: UIImageView!
     
+    var cellIndex = IndexPath()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,6 +33,7 @@ class postCell: UITableViewCell {
     
     //like or unlike a post
     @IBAction func likeBtn_click(_ sender: Any) {
+        
         let title = (sender as AnyObject).title(for: UIControl.State())
         if title == "like" {//like the post
             //save the like information
@@ -41,7 +44,7 @@ class postCell: UITableViewCell {
                 if success{
                     print("liked")
                     self.likeBtn.setTitle("unlike", for: UIControl.State())
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "liked"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "liked"), object: self.cellIndex)
                     
                     // send notification as unlike
                     if self.usernameBtn.titleLabel?.text != PFUser.current()?.username {
@@ -70,7 +73,7 @@ class postCell: UITableViewCell {
                             print("disliked")
                             self.likeBtn.setTitle("like", for: UIControl.State())
                             
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "liked"), object: nil)
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "liked"), object: self.cellIndex)
                             
                             // delete like notification
                             let newsQuery = PFQuery(className: "news")

@@ -22,6 +22,7 @@ class postVC: UITableViewController {
     var uuidArray = [String]()
     var titleArray = [String]()
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -38,13 +38,18 @@ class feedVC: UITableViewController {
         refresher.addTarget(self, action: #selector(feedVC.loadPosts), for: UIControl.Event.valueChanged)
         tableView.addSubview(refresher)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(feedVC.refresh), name: NSNotification.Name(rawValue: "liked"), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(feedVC.refreshCell), name: NSNotification.Name(rawValue: "liked"), object: nil)
         
         loadPosts()
     }
     
     @objc func refresh(){
         self.tableView.reloadData()
+    }
+    
+    @objc func refreshCell(notification:Notification){
+        let cellIndex = notification.object as! IndexPath
+        self.tableView.reloadRows(at: [cellIndex], with: UITableView.RowAnimation.none)
     }
     
     @objc func loadPosts(){
@@ -163,7 +168,7 @@ class feedVC: UITableViewController {
     //config cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! postCell
-        
+        cell.cellIndex = indexPath
         //config each component in cell
         cell.usernameBtn.setTitle(usernameArray[indexPath.row], for: UIControl.State())
         cell.uuidLbl.text = uuidArray[indexPath.row]
